@@ -1,0 +1,91 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mr Lingvo - Изучайте языки с ИИ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+  <header class="bg-blue-600 text-white py-6">
+    <div class="container mx-auto text-center">
+      <h1 class="text-4xl font-bold">Mr Lingvo</h1>
+      <p class="text-lg mt-2">Сервис на основе ИИ для разговорной практики и изучения иностранных языков</p>
+    </div>
+  </header>
+
+  <main class="container mx-auto py-10 px-4">
+    <section class="text-center">
+      <h2 class="text-2xl font-semibold mb-4">О проекте</h2>
+      <p class="text-gray-700 max-w-2xl mx-auto">
+        Mr Lingvo — это инновационный Telegram-бот, который помогает вам практиковать иностранные языки
+        с использованием искусственного интеллекта. Учите новые слова, отрабатывайте разговорные навыки
+        и улучшайте произношение в любое время!
+      </p>
+    </section>
+
+    <section class="text-center mt-10">
+      <h2 class="text-2xl font-semibold mb-4">Начните прямо сейчас</h2>
+      <a
+        href="https://t.me/MrLignvoBot"
+        class="inline-block bg-blue-600 text-white py-3 px-6 rounded-lg text-lg font-medium hover:bg-blue-700 transition"
+      >
+        Перейти к Telegram-боту
+      </a>
+    </section>
+  </main>
+
+  <footer class="bg-gray-800 text-white py-4">
+    <div class="container mx-auto text-center">
+      <p>© 2025 Mr Lingvo. Все права защищены.</p>
+      <div class="flex items-center justify-center mt-2">
+        <img 
+          src="https://upload.wikimedia.org/wikipedia/commons/d/dc/FASIE_RU_rgb_-_%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D0%BE%D0%B9.svg" 
+          alt="Логотип Фонда содействия инновациям" 
+          class="h-8 mr-2"
+        />
+        <p class="text-sm">Проект реализован при поддержке Фонда содействия инновациям в рамках программы «Студенческий Стартап» (очередь V)</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
