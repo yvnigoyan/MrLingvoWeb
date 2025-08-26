@@ -1,4 +1,11 @@
-<script type="text/javascript">
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mr Lingvo - Изучайте языки с ИИ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script type="text/javascript">
         var gk_isXlsx = false;
         var gk_xlsxFileLookup = {};
         var gk_fileData = {};
@@ -37,15 +44,22 @@
         }
         return gk_fileData[filename] || "";
         }
-        </script><!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mr Lingvo - Изучайте языки с ИИ</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  </script>
 </head>
 <body class="bg-gray-100 font-sans">
+  <div class="bg-gray-800 text-white py-4">
+    <div class="container mx-auto flex items-center justify-center">
+      <img 
+        src="https://upload.wikimedia.org/wikipedia/commons/d/dc/FASIE_RU_rgb_-_%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D0%BE%D0%B9.svg" 
+        alt="Логотип Фонда содействия инновациям" 
+        class="h-16 mr-2"
+      />
+      <p class="text-sm h-16 flex items-center text-center">
+        Проект создан при поддержке Федерального государственного бюджетного учреждения "Фонд содействия развитию малых форм предприятий в научно-технической сфере" в рамках программы "Студенческий стартап" федерального проекта "Платформа университетского технологического предпринимательства"
+      </p>
+    </div>
+  </div>
+
   <header class="bg-blue-600 text-white py-6">
     <div class="container mx-auto text-center">
       <h1 class="text-4xl font-bold">Mr Lingvo</h1>
@@ -64,6 +78,37 @@
     </section>
 
     <section class="text-center mt-10">
+      <h2 class="text-2xl font-semibold mb-4">Краткое описание проекта</h2>
+      <p class="text-gray-700 max-w-2xl mx-auto">
+        Mr Lingvo — это интеллектуальный помощник для изучения языков, работающий через Telegram. 
+        Бот использует передовые алгоритмы ИИ для персонализированного обучения, предоставляя 
+        возможность практики разговорной речи. Проект направлен на упрощение изучения языков и 
+        доступность обучения в любое время и в любом месте.
+      </p>
+    </section>
+
+    <section class="text-center mt-10">
+      <h2 class="text-2xl font-semibold mb-4">Технические характеристики</h2>
+      <div class="text-gray-700 max-w-2xl mx-auto">
+        <ul class="list-disc text-left">
+          <li>Платформа: Telegram-бот с интеграцией ИИ</li>
+          <li>Технологии: Python + API для обработки естественного языка</li>
+          <li>Особенности: поддержка множества языков, доступен функционал голосового ввода и вывода</li>
+          <li>Доступность: работает на любых устройствах с доступом к Telegram</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="text-center mt-10">
+      <h2 class="text-2xl font-semibold mb-4">Изображения продукта</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <img src="screenshoot_1.png" alt="Скриншот бота 1" class="rounded-lg shadow-md">
+        <img src="screenshoot_2.png" alt="Скриншот бота 2" class="rounded-lg shadow-md">
+        <img src="screenshoot_3.png" alt="Скриншот бота 3" class="rounded-lg shadow-md">
+      </div>
+    </section>
+
+    <section class="text-center mt-10">
       <h2 class="text-2xl font-semibold mb-4">Начните прямо сейчас</h2>
       <a
         href="https://t.me/MrLingvoBot"
@@ -77,13 +122,12 @@
   <footer class="bg-gray-800 text-white py-4">
     <div class="container mx-auto text-center">
       <p>© 2025 Mr Lingvo. Все права защищены.</p>
-      <div class="flex items-center justify-center mt-2">
-        <img 
-          src="https://upload.wikimedia.org/wikipedia/commons/d/dc/FASIE_RU_rgb_-_%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D0%BE%D0%B9.svg" 
-          alt="Логотип Фонда содействия инновациям" 
-          class="h-8 mr-2"
-        />
-        <p class="text-sm">Проект реализован при поддержке Фонда содействия инновациям в рамках программы «Студенческий Стартап» (очередь V)</p>
+      <div class="mt-4">
+        <h3 class="text-lg font-semibold">Контакты</h3>
+        <p>ООО «ИИ Солюшнс»</p>
+        <p>Юр. адрес: Московская область, г.о. Долгопрудный, ул. Первомайская, д. 3, к. 5, помещ./ком. 1/2</p>
+        <p>Email: <a href="mailto:yvnigoyan@mail.ru" class="underline">yvnigoyan@mail.ru</a></p>
+        <p>Телефон: <a href="tel:+79806419074" class="underline">+7 (980) 641-90-74</a></p>
       </div>
     </div>
   </footer>
